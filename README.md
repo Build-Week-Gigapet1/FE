@@ -5,4 +5,4 @@
 * react-router-dom
 
 ## Deployed site can be fourn here:
-https://gigapet1-hb6fpf4bv.now.sh/
+https://gigapet1.now.sh/
