@@ -1,116 +1,94 @@
-import React from "react";
-import {HelpBlock,FormGroup,FormControl,ControlLabel} from "react-bootstrap";
-import { axiosWithAuth } from "../auth/axiosWithAuth";
-import { useFormFields } from "../libs/hooksLib";
+import React, { useState, useEffect } from "react";
+import { withFormik, Form, Field } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
-export default function Signup(props) {
-  const [fields, handleFieldChange] = useFormFields({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    confirmationCode: ""
-  });
-  const [newUser, setNewUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  function validateForm() {
-    return (
-      fields.email.length > 0 &&
-      fields.password.length > 0 &&
-      fields.password === fields.confirmPassword
-    );
-  }
-
-  function validateConfirmationForm() {
-    return fields.confirmationCode.length > 0;
-  }
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    setIsLoading(true);
-
-    setNewUser("test");
-
-    setIsLoading(false);
-  }
-
-  async function handleConfirmationSubmit(event) {
-    event.preventDefault();
-
-    setIsLoading(true);
-  }
-
-  function renderConfirmationForm() {
-    return (
-      <form onSubmit={handleConfirmationSubmit}>
-        <FormGroup controlId="confirmationCode" bsSize="large">
-          <ControlLabel>Confirmation Code</ControlLabel>
-          <FormControl
-            autoFocus
-            type="tel"
-            onChange={handleFieldChange}
-            value={fields.confirmationCode}
-          />
-          <HelpBlock>Please check your email for the code.</HelpBlock>
-        </FormGroup>
-        <LoaderButton
-          block
-          type="submit"
-          bsSize="large"
-          isLoading={isLoading}
-          disabled={!validateConfirmationForm()}
-        >
-          Verify
-        </LoaderButton>
-      </form>
-    );
-  }
-
-  function renderForm() {
-    return (
-      <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email" bsSize="large">
-          <ControlLabel>Email</ControlLabel>
-          <FormControl
-            autoFocus
-            type="email"
-            value={fields.email}
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
-          <ControlLabel>Password</ControlLabel>
-          <FormControl
-            type="password"
-            value={fields.password}
-            onChange={handleFieldChange}
-          />
-        </FormGroup>
-        <FormGroup controlId="confirmPassword" bsSize="large">
-          <ControlLabel>Confirm Password</ControlLabel>
-          <FormControl
-            type="password"
-            onChange={handleFieldChange}
-            value={fields.confirmPassword}
-          />
-        </FormGroup>
-        <LoaderButton
-          block
-          type="submit"
-          bsSize="large"
-          isLoading={isLoading}
-          disabled={!validateForm()}
-        >
-          Signup
-        </LoaderButton>
-      </form>
-    );
-  }
-
+const MyForm = ({ values, errors, touched, status }) => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    console.log("status has changed", status);
+    status && setUsers(users => [...users, status]);
+  }, [status]);
   return (
-    <div className="Signup">
-      {newUser === null ? renderForm() : renderConfirmationForm()}
+    <div className="my-form">
+      <Form>
+        <label htmlFor="name">
+          Name
+          <Field id="name" type="text" name="name" placeholder="Type a Name" />
+          {touched.name && errors.name && (
+            <p className="errors">{errors.name}</p>
+          )}
+        </label>
+        <label htmlFor="email">
+          Email
+          <Field
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Type an Email"
+          />
+          {touched.email && errors.email && (
+            <p className="errors">{errors.email}</p>
+          )}
+        </label>
+        <label htmlFor="password">
+          Password
+          <Field
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Type Password"
+          />
+          {touched.password && errors.password && (
+            <p className="errors">{errors.password}</p>
+          )}
+        </label>
+        <label className="checkbox-container">
+          Terms of Service
+          <Field type="checkbox" name="tos" checked={values.tos} />
+          <span className="checkmark" />
+        </label>
+        <button type="submit">Submit</button>
+      </Form>
+      {users.map(user => {
+        return (
+          <ul key={user.id}>
+            <li>Name: {user.name}</li>
+            <li>Email: {user.email}</li>
+          </ul>
+        );
+      })}
     </div>
   );
-}
+};
+
+const FormikMyForm = withFormik({
+  mapPropsToValues(props) {
+    return {
+      name: props.name || "",
+      email: props.email || "",
+      password: props.password || "",
+      tos: props.tos || false
+    };
+  },
+
+  validationSchema: Yup.object().shape({
+    name: Yup.string().required(),
+    email: Yup.string().required(),
+    password: Yup.string().required()
+    // tos: Yup.boolean().oneOf([true])
+  }),
+  handleSubmit(values, { setStatus, resetForm }) {
+    console.log("submitting", values);
+    axios
+      .post("https://reqres.in/api/users/", values)
+      .then(res => {
+        console.log("success", res);
+        setStatus(res.data);
+        resetForm();
+      })
+      .catch(err => console.log(err.response));
+  }
+})(MyForm);
+
+export default FormikMyForm;

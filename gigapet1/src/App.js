@@ -10,13 +10,13 @@ import './App.css';
 
 //Components
 import { Login } from "./components/Login";
-import { SignUp } from "./components/SignUp";
+import  SignUp  from "./components/SignUp";
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/signup" component={SignUp} />
+        <Route path="/signup" component= {SignUp} />
         <Route component={Login} />
       </Switch>
     </div>
