@@ -3,7 +3,7 @@ import {HelpBlock,FormGroup,FormControl,ControlLabel} from "react-bootstrap";
 import { axiosWithAuth } from "../auth/axiosWithAuth";
 import { useFormFields } from "../libs/hooksLib";
 
-export default function Signup(props) {
+export const SignUp = (props) => {
   const [fields, handleFieldChange] = useFormFields({
     email: "",
     password: "",
