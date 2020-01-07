@@ -14,6 +14,7 @@ import SignUp from "./components/SignUp";
 import { Dashboard } from "./components/Dashboard";
 import { RemoveFoodForm } from "./components/RemoveFoodForm";
 import { FoodLog } from "./components/FoodLog";
+import { AddFoodForm } from "./components/AddFoodForm";
 
 //Coontext/STATE
 import { UserInfoContext } from "./context/UserInfoContext";
@@ -44,6 +45,7 @@ function App() {
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/removefood" component={RemoveFoodForm} />
           <PrivateRoute path="/feedlog" component={FoodLog} />
+          <PrivateRoute path="/feedpet" component={AddFoodForm} />
           <Route path="/signup" component={SignUp} />
           <Route component={Login} />
         </Switch>

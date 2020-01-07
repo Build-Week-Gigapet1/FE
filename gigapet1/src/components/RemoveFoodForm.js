@@ -1,6 +1,7 @@
 import React from 'react';
 
 //Tools and Hooks
+import { axiosWithAuth } from "./../auth/axiosWithAuth";
 
 //Style
 
