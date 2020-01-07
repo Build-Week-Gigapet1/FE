@@ -14,9 +14,9 @@ const MyForm = ({ values, errors, touched, status }) => {
     <div className="my-form">
       <Form>
         <label htmlFor="name">
-          Name
-          <Field id="name" type="text" name="name" placeholder="Type a Name" />
-          {touched.name && errors.name && (
+          Username
+          <Field id="username" type="username" name="username" placeholder="Username" />
+          {touched.username && errors.username && (
             <p className="errors">{errors.name}</p>
           )}
         </label>
@@ -26,7 +26,7 @@ const MyForm = ({ values, errors, touched, status }) => {
             id="email"
             type="email"
             name="email"
-            placeholder="Type an Email"
+            placeholder="Enter an Email"
           />
           {touched.email && errors.email && (
             <p className="errors">{errors.email}</p>

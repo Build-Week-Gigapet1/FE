@@ -38,11 +38,6 @@ const MyForm = ({ values, errors, touched, status }) => {
             <p className="errors">{errors.password}</p>
           )}
         </label>
-        <label className="checkbox-container">
-          Remember Me?
-          <Field type="checkbox" name="tos" checked={values.tos} />
-          <span className="checkmark" />
-        </label>
         <button type="submit">Login</button>
       </Form>
       {users.map(user => {
