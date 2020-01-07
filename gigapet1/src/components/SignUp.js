@@ -45,11 +45,11 @@ const MyForm = ({ values, errors, touched, status }) => {
             <p className="errors">{errors.password}</p>
           )}
         </label>
-        <label className="checkbox-container">
+{/*        <label className="checkbox-container">
           Terms of Service
           <Field type="checkbox" name="tos" checked={values.tos} />
           <span className="checkmark" />
-        </label>
+        </label>*/}
         <button type="submit">Submit</button>
       </Form>
       {users.map(user => {
@@ -70,7 +70,7 @@ const FormikMyForm = withFormik({
       username: props.username || "",
       petname: props.petname || "",
       password: props.password || "",
-      tos: props.tos || false
+      //tos: props.tos || false
     };
   },
 
@@ -89,9 +89,9 @@ const FormikMyForm = withFormik({
       .post("/register", values)
       .then(responce => {
         console.log(responce);
-        localStorage.setItem("token", responce.data.token);
-        localStorage.setItem("userID", responce.data.user.id);
-        window.location.href = "/";
+        //localStorage.setItem("token", responce.data.token);
+        //localStorage.setItem("userID", responce.data.user.id);
+        window.location.href = "/login";
         console.log("I ran");
       })
       .catch(error => console.log(error));
