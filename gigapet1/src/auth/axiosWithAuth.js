@@ -19,4 +19,46 @@ User login == https://gigapetbw4.herokuapp.com/auth/login
 
 User info == https://gigapetbw4.herokuapp.com/users/pet
 
+
+/login
+
+
+registration
+/register
+{
+    username: "
+    password: "
+    petname: "
+}
+{
+    userID: 1
+    username: "
+    password: "
+    petname: "
+    token: "
+}
+POST /:id/pet
+id is the userID
+{
+    date_fed: "
+    food_category: "
+    food_name: "
+    food_amount: "
+}
+GET /:id/pet
+id is the userId
+[
+    {
+        feedingID: 1
+        date_fed: "
+        food_category: "
+        food_name: "
+        food_amount: "
+    }
+]
+PUT /:id/pet/:feedingID
+id is the userId
+
+DELETE /:id/pet/feedID
+id is userID
 */
