@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+//import axios from "axios";
 
+import { axiosWithAuth } from "../auth/axiosWithAuth";
 
 const MyForm = ({ values, errors, touched, status }) => {
   const [users, setUsers] = useState([]);
@@ -80,15 +81,17 @@ const FormikMyForm = withFormik({
     // tos: Yup.boolean().oneOf([true])
   }),
   handleSubmit(values, { setStatus, resetForm }) {
-    console.log("submitting", values);
-    axios
-      .post("https://reqres.in/api/users/", values)
-      .then(res => {
-        console.log("success", res);
-        setStatus(res.data);
-        resetForm();
+    //console.log("submitting", values);
+    console.log("signup Handle");
+    axiosWithAuth()
+      .post("/auth/register", values)
+      .then(responce => {
+        //console.log(responce);
+        localStorage.setItem("token", responce.data.token);
+        window.location.href = "/";
+        console.log("I ran");
       })
-      .catch(err => console.log(err.response));
+      .catch(error => console.log(error));
   }
 })(MyForm);
 

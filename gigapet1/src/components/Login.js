@@ -67,15 +67,16 @@ const FormikMyForm = withFormik({
     // tos: Yup.boolean().oneOf([true])
   }),
   handleSubmit(values, { setStatus, resetForm }) {
-    console.log("submitting", values);
-    axios
-      .post("https://reqres.in/api/users/", values)
-      .then(res => {
-        console.log("success", res);
-        setStatus(res.data);
-        resetForm();
+    //console.log("submitting", values);
+    console.log("sign in handle");
+    axiosWithAuth()
+      .post("/auth/login", values)
+      .then(responce => {
+        //console.log(responce);
+        localStorage.setItem("token", responce.data.token);
+        window.location.href = "/dashboard";
       })
-      .catch(err => console.log(err.response));
+      .catch(error => console.log(error));
   }
 })(MyForm);
 
