@@ -67,7 +67,7 @@ const MyForm = ({ values, errors, touched, status }) => {
 const FormikMyForm = withFormik({
   mapPropsToValues(props) {
     return {
-      name: props.name || "",
+      username: props.username || "",
       email: props.email || "",
       password: props.password || "",
       tos: props.tos || false
@@ -75,7 +75,7 @@ const FormikMyForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-    name: Yup.string().required(),
+    username: Yup.string().required(),
     email: Yup.string().required(),
     password: Yup.string().required()
     // tos: Yup.boolean().oneOf([true])

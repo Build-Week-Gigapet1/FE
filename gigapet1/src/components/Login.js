@@ -55,14 +55,14 @@ const MyForm = ({ values, errors, touched, status }) => {
 const FormikMyForm = withFormik({
   mapPropsToValues(props) {
     return {
-      email: props.email || "",
+      username: props.username|| "",
       password: props.password || "",
       tos: props.tos || false
     };
   },
 
   validationSchema: Yup.object().shape({
-    email: Yup.string().required(),
+    username: Yup.string().required(),
     password: Yup.string().required()
     // tos: Yup.boolean().oneOf([true])
   }),
