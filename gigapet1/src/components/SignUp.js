@@ -76,17 +76,19 @@ const FormikMyForm = withFormik({
 
   validationSchema: Yup.object().shape({
     username: Yup.string().required(),
-    email: Yup.string().required(),
+    //email: Yup.string().required(),
     password: Yup.string().required()
     // tos: Yup.boolean().oneOf([true])
   }),
   handleSubmit(values, { setStatus, resetForm }) {
     //console.log("submitting", values);
     console.log("signup Handle");
+    console.log(values);
+    console.log("signup Handle");
     axiosWithAuth()
       .post("/register", values)
       .then(responce => {
-        //console.log(responce);
+        console.log(responce);
         localStorage.setItem("token", responce.data.token);
         localStorage.setItem("userID", responce.data.user.id);
         window.location.href = "/";
