@@ -27,6 +27,15 @@ function App() {
       .catch(err => console.log(err.response));
   }, []);*/
 
+   const [SignUpState, confimationstate] = useState();
+
+   useEffect(() => {
+    axiosWithAuth()
+    .get(`/auth/${localStorage.getitem("userID")}/pet`, localStorage.getItem("token"))
+    .then(response => console.log(response.data))
+    .catch(error => console.log(error.response));
+    }, []);
+
   return (
     <div className="App">
       <UserInfoContext.Provider value={{}}>

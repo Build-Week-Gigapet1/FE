@@ -56,7 +56,7 @@ const MyForm = ({ values, errors, touched, status }) => {
         return (
           <ul key={user.id}>
             <li>Username: {user.username}</li>
-            <li>Pet: {user.petname}</li>
+            <li>Pet {user.petname}</li>
           </ul>
         );
       })}

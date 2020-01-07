@@ -45,8 +45,8 @@ const MyForm = ({ values, errors, touched, status }) => {
       {users.map(user => {
         return (
           <ul key={user.id}>
-            <li>Name: {user.name}</li>
-            <li>Email: {user.email}</li>
+            <li>username: {user.name}</li>
+            <li>password: {user.password}</li>
           </ul>
         );
       })}
