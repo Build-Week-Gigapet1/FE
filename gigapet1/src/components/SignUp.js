@@ -88,7 +88,7 @@ const FormikMyForm = withFormik({
       .then(responce => {
         //console.log(responce);
         localStorage.setItem("token", responce.data.token);
-        localStorage.setItem("userID", responce.data.userID);
+        localStorage.setItem("userID", responce.data.user.id);
         window.location.href = "/";
         console.log("I ran");
       })

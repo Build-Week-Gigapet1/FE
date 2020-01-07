@@ -6,13 +6,14 @@ import { PrivateRoute } from "./auth/PrivateRoute";
 import { axiosWithAuth } from "./auth/axiosWithAuth";
 
 //Style
-import logo from './logo.svg';
 import './App.css';
 
 //Components
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import { Dashboard } from "./components/Dashboard";
+import { RemoveFoodForm } from "./components/RemoveFoodForm";
+import { FoodLog } from "./components/FoodLog";
 
 //Coontext/STATE
 import { UserInfoContext } from "./context/UserInfoContext";
@@ -32,6 +33,8 @@ function App() {
       <UserInfoContext.Provider value={{}}>
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/removefood" component={RemoveFoodForm} />
+          <PrivateRoute path="/feedlog" component={FoodLog} />
           <Route path="/signup" component={SignUp} />
           <Route component={Login} />
         </Switch>

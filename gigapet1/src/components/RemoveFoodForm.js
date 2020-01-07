@@ -8,11 +8,11 @@ import React from 'react';
 
 //Coontext/STATE
 
-export const Pet = (props) => {
+export const RemoveFoodForm = (props) => {
 
   return (
     <>
-    Pet Component
+    RemoveFoodForm
     </>
   );
 };

@@ -72,10 +72,11 @@ const FormikMyForm = withFormik({
     //console.log("submitting", values);
     console.log("sign in handle");
     axiosWithAuth()
-      .post("/auth/login", values)
+      .post("/login", values)
       .then(responce => {
-        //console.log(responce);
+        //console.log(responce.data.user);
         localStorage.setItem("token", responce.data.token);
+        localStorage.setItem("userID", responce.data.user.id);
         window.location.href = "/dashboard";
       })
       .catch(error => console.log(error));
