@@ -9,7 +9,7 @@ import logo from './logo.svg';
 import './App.css';
 
 //Components
-import { Login } from "./components/Login";
+import  Login  from "./components/Login";
 import  SignUp  from "./components/SignUp";
 
 function App() {
