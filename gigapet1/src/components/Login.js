@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import { Link } from "react-router-dom";
+//import axios from "axios";
 
 import { axiosWithAuth } from "../auth/axiosWithAuth";
 
@@ -40,6 +41,7 @@ const MyForm = ({ values, errors, touched, status }) => {
         </label>
         <button type="submit">Login</button>
       </Form>
+      <Link to="/signup">Sign Up</Link>
       {users.map(user => {
         return (
           <ul key={user.id}>
