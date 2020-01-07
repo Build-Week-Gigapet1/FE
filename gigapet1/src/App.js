@@ -5,11 +5,10 @@ import { Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./auth/PrivateRoute";
 
 //Style
-import logo from './logo.svg';
 import './App.css';
 
 //Components
-import { Login } from "./components/Login";
+import Login from "./components/Login";
 import { SignUp } from "./components/SignUp";
 
 function App() {
