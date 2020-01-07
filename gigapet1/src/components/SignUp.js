@@ -21,16 +21,16 @@ const MyForm = ({ values, errors, touched, status }) => {
             <p className="errors">{errors.name}</p>
           )}
         </label>
-        <label htmlFor="email">
-          Email
+        <label htmlFor="petname">
+          Pet Name
           <Field
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Enter an Email"
+            id="petname"
+            type="petname"
+            name="petname"
+            placeholder="Pet Name"
           />
-          {touched.email && errors.email && (
-            <p className="errors">{errors.email}</p>
+          {touched.petnames && errors.petnames && (
+            <p className="errors">{errors.petnames}</p>
           )}
         </label>
         <label htmlFor="password">
@@ -55,8 +55,8 @@ const MyForm = ({ values, errors, touched, status }) => {
       {users.map(user => {
         return (
           <ul key={user.id}>
-            <li>Name: {user.name}</li>
-            <li>Email: {user.email}</li>
+            <li>Username: {user.username}</li>
+            <li>Pet: {user.petname}</li>
           </ul>
         );
       })}
@@ -68,7 +68,7 @@ const FormikMyForm = withFormik({
   mapPropsToValues(props) {
     return {
       username: props.username || "",
-      email: props.email || "",
+      petname: props.petname || "",
       password: props.password || "",
       tos: props.tos || false
     };
@@ -83,13 +83,12 @@ const FormikMyForm = withFormik({
   handleSubmit(values, { setStatus, resetForm }) {
     //console.log("submitting", values);
     console.log("signup Handle");
-    console.log(values);
-    console.log("signup Handle");
     axiosWithAuth()
-      .post("/auth/register", values)
+      .post("/register", values)
       .then(responce => {
         //console.log(responce);
         localStorage.setItem("token", responce.data.token);
+        localStorage.setItem("userID", responce.data.userID);
         window.location.href = "/";
         console.log("I ran");
       })
