@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //Tools and Hooks
-import { axiosWithAuth } from "./../auth/axiosWithAuth";
 
 //Style
 
@@ -13,7 +12,7 @@ export const RemoveFoodForm = (props) => {
 
   return (
     <>
-    RemoveFoodForm
+    Remove Food Form
     </>
   );
 };

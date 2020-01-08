@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 //Tools and Hooks
 import { axiosWithAuth } from "./../auth/axiosWithAuth";
@@ -6,10 +6,13 @@ import { axiosWithAuth } from "./../auth/axiosWithAuth";
 //Style
 
 //Components
+import { NavLinks } from "./NavLinks";
 
 //Coontext/STATE
+import { UserInfoContext } from "./../context/UserInfoContext";
 
 export const AddFoodForm = (props) => {
+  const {petFeedLog, setChangeMade} = useContext(UserInfoContext);
   const [testFeed, setFestFeed] = useState(
     {
       date_fed: new Date(),
@@ -36,6 +39,7 @@ export const AddFoodForm = (props) => {
       .then(responce => {
         //console.log(responce);
         //props.history.push("/dashboard");
+        setChangeMade(new Date());
       })
       .catch(error => console.log(error));
   };
@@ -74,6 +78,7 @@ export const AddFoodForm = (props) => {
       />
       <button>Submit</button>
     </form>
+    <NavLinks />
     </>
   );
 };

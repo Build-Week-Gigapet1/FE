@@ -29,18 +29,24 @@ function App() {
       .catch(err => console.log(err.response));
   }, []);*/
 
-  const [signUpState, confimationstate] = useState();
+  const [petFeedLog, setPetFeedLog] = useState([]);
+  const [changeMade, setChangeMade] = useState("");
 
   useEffect(() => {
     axiosWithAuth()
      .get(`/auth/${localStorage.getItem("userID")}/pet`, localStorage.getItem("token"))
-     .then(response => console.log(response.data))
+     .then(response => {
+       console.log("the get");
+       console.log(response.data);
+       console.log("the get");
+       setPetFeedLog(response.data);
+     })
      .catch(error => console.log(error.response));
-  }, []);
+  }, [changeMade]);
 
   return (
     <div className="App">
-      <UserInfoContext.Provider value={{}}>
+      <UserInfoContext.Provider value={{petFeedLog, setChangeMade}}>
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/removefood" component={RemoveFoodForm} />

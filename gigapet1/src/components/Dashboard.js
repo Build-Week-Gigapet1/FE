@@ -8,6 +8,7 @@ import { axiosWithAuth } from "../auth/axiosWithAuth";
 
 //Components
 import { Pet } from "./Pet";
+import { NavLinks } from "./NavLinks";
 
 //Coontext/STATE
 
@@ -18,10 +19,7 @@ export const Dashboard = (props) => {
     <>
     Dashboard
     <Pet />
-
-    <Link to="/feedpet">Add Food</Link>
-    <Link to="/feedlog">What I Ate</Link>
-    <Link to="/removefood">Remove food</Link>
+    <NavLinks />
     </>
   );
 };

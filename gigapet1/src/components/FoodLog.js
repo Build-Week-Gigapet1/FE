@@ -5,6 +5,7 @@ import React from 'react';
 //Style
 
 //Components
+import { NavLinks } from "./NavLinks";
 
 //Coontext/STATE
 
@@ -13,6 +14,8 @@ export const FoodLog = (props) => {
   return (
     <>
     FoodLog Component
+
+    <NavLinks />
     </>
   );
 };
