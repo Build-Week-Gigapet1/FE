@@ -16,7 +16,7 @@ import { FoodLog } from "./components/FoodLog";
 import { AddFoodForm } from "./components/AddFoodForm";
 import { NavLinks } from './components/NavLinks';
 import Chart from './components/Chart';
-import { NavBar } from './components/NavBar';
+import { NavBar } from "./components/NavBar";
 
 //Coontext/STATE
 import { UserInfoContext } from "./context/UserInfoContext";
@@ -45,8 +45,8 @@ function App() {
     <div className="App">
       <UserInfoContext.Provider value={{petFeedLog, setChangeMade, setPetFeedLog}}>
           <NavBar/>
-          <Chart/>
           <PrivateRoute path="/" component={NavLinks} />
+          <Chart/>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/feedlog" component={FoodLog} />
           <PrivateRoute exact path="/feedpet" component={AddFoodForm} />

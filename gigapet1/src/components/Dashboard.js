@@ -8,7 +8,6 @@ import { axiosWithAuth } from "../auth/axiosWithAuth";
 
 //Components
 import { Pet } from "./Pet";
-import { NavLinks } from "./NavLinks";
 
 //Coontext/STATE
 

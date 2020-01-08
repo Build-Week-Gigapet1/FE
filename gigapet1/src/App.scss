@@ -275,6 +275,7 @@ header {
   padding: 0;
   margin: 0;
   width: 100%;
+  border-top: solid 2px white;
   ul li {
     width: 100%;
     padding: 13px;
@@ -282,5 +283,27 @@ header {
       color: white;
       text-decoration: none;
     }
+  }
+}
+
+form {
+  width: 90%;
+  margin: 5px auto;
+  padding: 0;
+  display: flex;
+  flex-flow: column wrap;
+  input, select {
+    width: 100%;
+    padding: 0;
+    margin: 4px auto;
+    height: 65px;
+    font-size: 2.5rem;
+  }
+  button {
+    width: 100%;
+    margin: 5px auto;
+    color: white;
+    background: #6C46A2;
+    font-size: 2.25rem;
   }
 }
