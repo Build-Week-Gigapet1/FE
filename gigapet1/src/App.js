@@ -30,9 +30,9 @@ function App() {
       axiosWithAuth()
        .get(`/auth/${localStorage.getItem("userID")}/pet`, localStorage.getItem("token"))
        .then(response => {
-         console.log("the get");
-         console.log(response.data);
-         console.log("the get");
+         //console.log("the get");
+         //console.log(response.data);
+         //console.log("the get");
          setPetFeedLog(response.data);
        })
        .catch(error => console.log(error.response));
