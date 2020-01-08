@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { ResponsiveContainer, PieChart, Pie } from "recharts";
 import { UserInfoContext } from "../context/UserInfoContext";
 
+
+/* Component is supposed to take in a time period like day/week/month
+   And spit out a Pie Chart with data displayed by food_category
+   data is probably better transformed right here */
 export default function Chart({ timePeriod }) {
   const { petFeedLog, setChangeMade } = useContext(UserInfoContext);
   function transformData(inputData) {

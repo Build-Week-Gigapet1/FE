@@ -11,6 +11,8 @@ import { NavLinks } from "./NavLinks";
 import { UserInfoContext } from "./../context/UserInfoContext";
 import { getCurrentDate } from "../helpers";
 
+
+//Reused the form for editing entries, so there is a little bit more logic inside, depending on where it is used.
 export const AddFoodForm = ({ toEdit }) => {
   const { petFeedLog, setChangeMade } = useContext(UserInfoContext);
   const [testFeed, setFestFeed] = useState(
