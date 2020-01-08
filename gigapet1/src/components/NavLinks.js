@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 export const NavLinks = props => {
   return (
     <header>
-      <nav>
+      <nav className="reactDashLinks">
         <ul>
           <li>
             <NavLink to="/feedpet">Add Food</NavLink>

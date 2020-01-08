@@ -258,3 +258,29 @@ section button {
   padding: 0.5% 0%;
   width: 33%;
 }
+
+//END OF HTML UNIT 1 CSS
+
+header {
+  padding: 0;
+  margin: 0;
+}
+
+.nodec {
+  color: white;
+  text-decoration: none;
+}
+
+.reactDashLinks {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  ul li {
+    width: 100%;
+    padding: 13px;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
