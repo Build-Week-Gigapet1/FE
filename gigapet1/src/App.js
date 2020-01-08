@@ -12,13 +12,13 @@ import './App.css';
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import { Dashboard } from "./components/Dashboard";
-import { RemoveFoodForm } from "./components/RemoveFoodForm";
 import { FoodLog } from "./components/FoodLog";
 import { AddFoodForm } from "./components/AddFoodForm";
 
 //Coontext/STATE
 import { UserInfoContext } from "./context/UserInfoContext";
 import { NavLinks } from './components/NavLinks';
+import Chart from './components/Chart';
 
 function App() {
 
@@ -42,6 +42,7 @@ function App() {
   return (
     <div className="App">
       <UserInfoContext.Provider value={{petFeedLog, setChangeMade, setPetFeedLog}}>
+          <Chart/>
           <PrivateRoute path="/" component={NavLinks} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/feedlog" component={FoodLog} />
