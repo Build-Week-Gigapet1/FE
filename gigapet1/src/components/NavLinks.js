@@ -26,6 +26,18 @@ export const NavLinks = props => {
           <li>
             <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/dashboard"
+              onClick={event =>
+                localStorage.getItem("token")
+                  ? localStorage.removeItem("token")
+                  : ""
+              }
+            >
+              {localStorage.getItem("token") ? "Log out" : "Log in"}
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
