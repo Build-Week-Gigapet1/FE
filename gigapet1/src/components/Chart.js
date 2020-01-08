@@ -73,6 +73,7 @@ export default function Chart({ timePeriod }) {
     );
   }, [petFeedLog]);
 //forChart state == the reqested [{fruit: qty},{dairy: qty},,,] FORMAT
+console.log(forChart);
 
   function transformData(inputData) {
     console.log(inputData);

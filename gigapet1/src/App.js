@@ -6,7 +6,7 @@ import { PrivateRoute } from "./auth/PrivateRoute";
 import { axiosWithAuth } from "./auth/axiosWithAuth";
 
 //Style
-import './App.css';
+import './App.scss';
 
 //Components
 import Login from "./components/Login";
@@ -14,11 +14,13 @@ import SignUp from "./components/SignUp";
 import { Dashboard } from "./components/Dashboard";
 import { FoodLog } from "./components/FoodLog";
 import { AddFoodForm } from "./components/AddFoodForm";
+import { NavLinks } from './components/NavLinks';
+import Chart from './components/Chart';
+import { NavBar } from './components/NavBar';
 
 //Coontext/STATE
 import { UserInfoContext } from "./context/UserInfoContext";
-import { NavLinks } from './components/NavLinks';
-import Chart from './components/Chart';
+
 
 function App() {
 
@@ -42,6 +44,7 @@ function App() {
   return (
     <div className="App">
       <UserInfoContext.Provider value={{petFeedLog, setChangeMade, setPetFeedLog}}>
+          <NavBar/>
           <Chart/>
           <PrivateRoute path="/" component={NavLinks} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />

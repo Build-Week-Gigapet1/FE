@@ -6,6 +6,9 @@
 * reactstrap
 * formik
 * yup
+* chart
+* ???
+* node-sass
 
 ## Deployed site can be fourn here:
 https://gigapet1.now.sh/
