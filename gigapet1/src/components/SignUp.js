@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 import { axiosWithAuth } from "../auth/axiosWithAuth";
 
-const MyForm = ({ values, errors, touched, status }) => {
+export const MyForm = ({ values, errors, touched, status }) => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     console.log("status has changed", status);

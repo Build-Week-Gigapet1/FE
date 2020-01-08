@@ -18,43 +18,37 @@ import { AddFoodForm } from "./components/AddFoodForm";
 
 //Coontext/STATE
 import { UserInfoContext } from "./context/UserInfoContext";
+import { NavLinks } from './components/NavLinks';
 
 function App() {
-/*  const [testBEState, settestBEState] = useState();
-
-  useEffect(() => {
-    axiosWithAuth()
-      .get("/users/pet", localStorage.getItem("token"))
-      .then(res => console.log(res))
-      .catch(err => console.log(err.response));
-  }, []);*/
 
   const [petFeedLog, setPetFeedLog] = useState([]);
   const [changeMade, setChangeMade] = useState("");
 
   useEffect(() => {
-    axiosWithAuth()
-     .get(`/auth/${localStorage.getItem("userID")}/pet`, localStorage.getItem("token"))
-     .then(response => {
-       console.log("the get");
-       console.log(response.data);
-       console.log("the get");
-       setPetFeedLog(response.data);
-     })
-     .catch(error => console.log(error.response));
+    if(localStorage.getItem("token")){
+      axiosWithAuth()
+       .get(`/auth/${localStorage.getItem("userID")}/pet`, localStorage.getItem("token"))
+       .then(response => {
+         console.log("the get");
+         console.log(response.data);
+         console.log("the get");
+         setPetFeedLog(response.data);
+       })
+       .catch(error => console.log(error.response));
+    }
   }, [changeMade]);
 
   return (
     <div className="App">
       <UserInfoContext.Provider value={{petFeedLog, setChangeMade}}>
-        <Switch>
-          <PrivateRoute path="/dashboard" component={Dashboard} />
-          <PrivateRoute path="/removefood" component={RemoveFoodForm} />
-          <PrivateRoute path="/feedlog" component={FoodLog} />
-          <PrivateRoute path="/feedpet" component={AddFoodForm} />
-          <Route path="/signup" component={SignUp} />
-          <Route component={Login} />
-        </Switch>
+          <PrivateRoute path="/" component={NavLinks} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/removefood" component={RemoveFoodForm} />
+          <PrivateRoute exact path="/feedlog" component={FoodLog} />
+          <PrivateRoute exact path="/feedpet" component={AddFoodForm} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/login" component={Login} />
       </UserInfoContext.Provider>
     </div>
   );

@@ -14,8 +14,6 @@ export const FoodLog = (props) => {
   return (
     <>
     FoodLog Component
-
-    <NavLinks />
     </>
   );
 };

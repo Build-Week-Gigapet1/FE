@@ -19,7 +19,6 @@ export const Dashboard = (props) => {
     <>
     Dashboard
     <Pet />
-    <NavLinks />
     </>
   );
 };
