@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
+import {Link} from 'react-router-dom';
 //import axios from "axios";
-
 import { axiosWithAuth } from "../auth/axiosWithAuth";
 
-const MyForm = ({ values, errors, touched, status }) => {
+export const MyForm = ({ values, errors, touched, status }) => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     console.log("status has changed", status);
@@ -52,6 +52,7 @@ const MyForm = ({ values, errors, touched, status }) => {
         </label>*/}
         <button type="submit">Submit</button>
       </Form>
+      <Link to="/login">Log in</Link>
       {users.map(user => {
         return (
           <ul key={user.id}>
