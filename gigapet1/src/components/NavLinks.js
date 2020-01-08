@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 //Tools and Hooks
@@ -8,11 +8,14 @@ import { NavLink } from "react-router-dom";
 //Components
 
 //Coontext/STATE
+import { UserInfoContext } from "./../context/UserInfoContext";
 
 export const NavLinks = props => {
+  const { menuState, setMenuState } = useContext(UserInfoContext);
+
   return (
     <header>
-      <nav className="reactDashLinks">
+      <nav className={menuState}>
         <ul>
           <li>
             <NavLink to="/feedpet">Add Food</NavLink>

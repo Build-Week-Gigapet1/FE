@@ -26,6 +26,7 @@ function App() {
 
   const [petFeedLog, setPetFeedLog] = useState([]);
   const [changeMade, setChangeMade] = useState("");
+  const [menuState, setMenuState] = useState("hideme");
 
   useEffect(() => {
     if(localStorage.getItem("token")){
@@ -40,10 +41,17 @@ function App() {
        .catch(error => console.log(error.response));
     }
   }, [changeMade]);
+console.log("changeMade");
+console.log(changeMade);
+console.log("changeMade");
+
+console.log("petFeedLog");
+console.log(petFeedLog);
+console.log("petFeedLog");
 
   return (
     <div className="App">
-      <UserInfoContext.Provider value={{petFeedLog, setChangeMade, setPetFeedLog}}>
+      <UserInfoContext.Provider value={{petFeedLog, setChangeMade, setPetFeedLog, menuState, setMenuState}}>
           <NavBar/>
           <PrivateRoute path="/" component={NavLinks} />
           <Chart/>
