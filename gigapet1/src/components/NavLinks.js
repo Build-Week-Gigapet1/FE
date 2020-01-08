@@ -21,9 +21,6 @@ export const NavLinks = props => {
             <NavLink to="/feedlog">What I Ate</NavLink>
           </li>
           <li>
-            <NavLink to="/removefood">Remove food</NavLink>
-          </li>
-          <li>
             <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
           <li>
