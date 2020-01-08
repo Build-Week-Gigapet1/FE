@@ -41,13 +41,13 @@ function App() {
        .catch(error => console.log(error.response));
     }
   }, [changeMade]);
-console.log("changeMade");
+/*console.log("changeMade");
 console.log(changeMade);
 console.log("changeMade");
 
 console.log("petFeedLog");
 console.log(petFeedLog);
-console.log("petFeedLog");
+console.log("petFeedLog");*/
 
   return (
     <div className="App">
