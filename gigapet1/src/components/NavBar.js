@@ -15,7 +15,7 @@ export const NavBar = props => {
     <nav>
       <h1><a className="nodec" href="https://compassionate-lamarr-da90b8.netlify.com/">Lambdi Pet</a></h1>
       <div>
-        <a>Our Team</a>
+        <a className="nodec" href="https://compassionate-lamarr-da90b8.netlify.com/about.html">Our Team</a>
         <a>Log In</a>
       </div>
     </nav>
