@@ -41,10 +41,9 @@ function App() {
 
   return (
     <div className="App">
-      <UserInfoContext.Provider value={{petFeedLog, setChangeMade}}>
+      <UserInfoContext.Provider value={{petFeedLog, setChangeMade, setPetFeedLog}}>
           <PrivateRoute path="/" component={NavLinks} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <PrivateRoute exact path="/removefood" component={RemoveFoodForm} />
           <PrivateRoute exact path="/feedlog" component={FoodLog} />
           <PrivateRoute exact path="/feedpet" component={AddFoodForm} />
           <Route exact path="/signup" component={SignUp} />
