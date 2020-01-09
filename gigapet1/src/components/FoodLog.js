@@ -5,7 +5,6 @@ import React, { useContext } from "react";
 //Style
 
 //Components
-import { NavLinks } from "./NavLinks";
 import FoodEntry from "./FoodEntry";
 
 //Coontext/STATE
