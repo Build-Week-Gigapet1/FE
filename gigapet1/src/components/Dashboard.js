@@ -3,20 +3,29 @@ import React, { useContext, useState, useEffect } from "react";
 //Tools and Hooks
 import { getCurrentDate } from "../helpers";
 
-//Style
-
 //Components
 import { Pet } from "./Pet";
 import Chart from "./Chart";
-import { UserInfoContext } from "../context/UserInfoContext";
 
 //Coontext/STATE
+import { UserInfoContext } from "../context/UserInfoContext";
+//Style
+import { DashboardWrapper } from "./styled";
+
 
 export const Dashboard = props => {
   const { petFeedLog } = useContext(UserInfoContext);
   const [timePeriod, setTimePeriod] = useState("all-time");
   const [chartData, setChartData] = useState(petFeedLog);
   const timeOptions = ["all-time", "month", "day"];
+  const [petLvl, setPetLvl] = useState(0);
+  useEffect(()=>{
+    const feedingsToday = petFeedLog.filter(elem=>elem.date_fed===getCurrentDate()).length;
+    if(feedingsToday>2) setPetLvl(3);
+    if(feedingsToday===1) setPetLvl(2);
+    if(feedingsToday===0) setPetLvl(1);
+  },[petFeedLog])
+
   useEffect(() => {
     switch (timePeriod) {
       case timeOptions[0]:
@@ -40,8 +49,9 @@ export const Dashboard = props => {
     }
   }, [timePeriod, petFeedLog]);
   return (
-    <>
-      <Pet />
+    <DashboardWrapper>
+      <Pet petLvl={petLvl}/>
+      <h3>Summary of food entries for selected period:</h3>
       <select onClick={e=>setTimePeriod(e.target.value)}>
         {timeOptions.map((elem, index) => (
           <option value={elem} key={index}>
@@ -50,6 +60,6 @@ export const Dashboard = props => {
         ))}
       </select>
       <Chart chartData={chartData} />
-    </>
+    </DashboardWrapper>
   );
 };
