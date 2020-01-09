@@ -13,7 +13,7 @@ import { getCurrentDate } from "../helpers";
 
 
 //Reused the form for editing entries, so there is a little bit more logic inside, depending on where it is used.
-export const AddFoodForm = ({ toEdit }) => {
+export const AddFoodForm = ({ toEdit, history }) => {
   const { petFeedLog, setChangeMade } = useContext(UserInfoContext);
   const [testFeed, setFestFeed] = useState(
     toEdit
@@ -55,7 +55,7 @@ export const AddFoodForm = ({ toEdit }) => {
         .post(`/auth/${localStorage.getItem("userID")}/pet`, testFeed)
         .then(response => {
           //console.log(response);
-          //props.history.push("/dashboard");
+          history.push("/feedlog");
           setChangeMade(new Date());
         })
         .catch(error => console.log(error));
