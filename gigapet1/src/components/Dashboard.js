@@ -47,7 +47,7 @@ export const Dashboard = props => {
       default:
         return setChartData(petFeedLog);
     }
-  }, [timePeriod, petFeedLog, timeOptions]);
+  }, [timePeriod, petFeedLog]);
   return (
     <DashboardWrapper>
       <Pet petLvl={petLvl}/>
