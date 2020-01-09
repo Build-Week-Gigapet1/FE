@@ -54,7 +54,6 @@ console.log("petFeedLog");*/
       <UserInfoContext.Provider value={{petFeedLog, setChangeMade, setPetFeedLog, menuState, setMenuState}}>
           <NavBar/>
           <PrivateRoute path="/" component={NavLinks} />
-          <Chart/>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/feedlog" component={FoodLog} />
           <PrivateRoute exact path="/feedpet" component={AddFoodForm} />
