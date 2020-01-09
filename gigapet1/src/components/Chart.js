@@ -10,7 +10,7 @@ export default function Chart({ timePeriod }) {
 
   //RE SORD FEED LOG TO [{fruit: qty},{dairy: qty},,,] FORMAT
   const [forChart, setForChart] = useState([]);
-  const colors = ["#fffc31", "#e53d00", "#550527", "#21a0a0", "#db222a"]
+  const colors = ["#aaff31", "#e53d00", "#550527", "#21a0a0", "#db222a"]
 
   useEffect(() => {
 
