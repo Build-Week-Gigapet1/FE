@@ -20,10 +20,10 @@ export const Dashboard = props => {
   const timeOptions = ["all-time", "month", "day"];
   const [petLvl, setPetLvl] = useState(0);
   useEffect(()=>{
-    const feedingsToday = petFeedLog.filter(elem=>elem.date_fed===getCurrentDate()).length;
-    if(feedingsToday>2) setPetLvl(3);
-    if(feedingsToday===1) setPetLvl(2);
-    if(feedingsToday===0) setPetLvl(1);
+    let feedingsToday = petFeedLog.filter(elem=>elem.date_fed===getCurrentDate()).length;
+    if(feedingsToday>2) setPetLvl(2);
+    if(feedingsToday===1) setPetLvl(1);
+    if(feedingsToday===0) setPetLvl(0);
   },[petFeedLog])
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const Dashboard = props => {
       default:
         return setChartData(petFeedLog);
     }
-  }, [timePeriod, petFeedLog]);
+  }, [timePeriod, petFeedLog, timeOptions]);
   return (
     <DashboardWrapper>
       <Pet petLvl={petLvl}/>

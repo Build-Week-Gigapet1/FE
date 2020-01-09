@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 //Tools and Hooks
 import { PrivateRoute } from "./auth/PrivateRoute";
@@ -15,7 +15,6 @@ import { Dashboard } from "./components/Dashboard";
 import { FoodLog } from "./components/FoodLog";
 import { AddFoodForm } from "./components/AddFoodForm";
 import { NavLinks } from './components/NavLinks';
-import Chart from './components/Chart';
 import { NavBar } from "./components/NavBar";
 
 //Coontext/STATE
@@ -33,21 +32,12 @@ function App() {
       axiosWithAuth()
        .get(`/auth/${localStorage.getItem("userID")}/pet`, localStorage.getItem("token"))
        .then(response => {
-         //console.log("the get");
-         //console.log(response.data);
-         //console.log("the get");
          setPetFeedLog(response.data);
        })
        .catch(error => console.log(error.response));
     }
   }, [changeMade]);
-/*console.log("changeMade");
-console.log(changeMade);
-console.log("changeMade");
 
-console.log("petFeedLog");
-console.log(petFeedLog);
-console.log("petFeedLog");*/
 
   return (
     <div className="App">

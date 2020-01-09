@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 import { UserInfoContext } from "./../context/UserInfoContext";
 
 export const NavLinks = props => {
-  const { menuState, setMenuState } = useContext(UserInfoContext);
+  const { menuState } = useContext(UserInfoContext);
 
   return (
     <header>

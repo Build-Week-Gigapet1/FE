@@ -12,7 +12,6 @@ import { UserInfoContext } from "../context/UserInfoContext";
 
 export const FoodLog = props => {
   const { petFeedLog, setPetFeedLog } = useContext(UserInfoContext);
-  console.log(petFeedLog);
 
   return (
     <>

@@ -69,7 +69,6 @@ const FormikMyForm = withFormik({
     // tos: Yup.boolean().oneOf([true])
   }),
   handleSubmit(values, { setStatus, resetForm }) {
-    //console.log("submitting", values);
     console.log("sign in handle");
     axiosWithAuth()
       .post("/login", values)

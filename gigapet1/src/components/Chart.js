@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
-import { UserInfoContext } from "../context/UserInfoContext";
 
 /* Component is supposed to take in a time period like day/week/month
    And spit out a Pie Chart with data displayed by food_category
@@ -12,7 +11,6 @@ export default function Chart({ chartData }) {
   const colors = ["#aaff31", "#e53d00", "#550527", "#21a0a0", "#db222a"]
 
   useEffect(() => {
-    console.log(chartData);
     
     function transformData(inputData) {
       let categoryArray = [];
@@ -76,7 +74,7 @@ export default function Chart({ chartData }) {
           }}
         >
           {
-          	forChart.map((entry, index) => <Cell fill={colors[index % colors.length]}/>)
+          	forChart.map((entry, index) => <Cell fill={colors[index % colors.length]} key={index}/>)
           }
         </Pie>
       </PieChart>

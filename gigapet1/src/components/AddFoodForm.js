@@ -5,7 +5,6 @@ import { axiosWithAuth } from "./../auth/axiosWithAuth";
 //Style
 
 //Components
-import { NavLinks } from "./NavLinks";
 
 //Coontext/STATE
 import { UserInfoContext } from "./../context/UserInfoContext";
@@ -14,7 +13,7 @@ import { getCurrentDate } from "../helpers";
 
 //Reused the form for editing entries, so there is a little bit more logic inside, depending on where it is used.
 export const AddFoodForm = ({ toEdit, history }) => {
-  const { petFeedLog, setChangeMade } = useContext(UserInfoContext);
+  const { setChangeMade } = useContext(UserInfoContext);
   const [testFeed, setFestFeed] = useState(
     toEdit
       ? {
@@ -36,7 +35,6 @@ export const AddFoodForm = ({ toEdit, history }) => {
       ...testFeed,
       [event.target.name]: event.target.value
     });
-    console.log(testFeed);
   };
 
   const handleSubmit = event => {
@@ -45,8 +43,6 @@ export const AddFoodForm = ({ toEdit, history }) => {
       axiosWithAuth()
         .put(`/auth/${localStorage.getItem("userID")}/pet/${toEdit.id}`, testFeed)
         .then(response => {
-          //console.log(response);
-          //props.history.push("/dashboard");
           setChangeMade(new Date());
         })
         .catch(error => console.log(error));
@@ -54,7 +50,6 @@ export const AddFoodForm = ({ toEdit, history }) => {
       axiosWithAuth()
         .post(`/auth/${localStorage.getItem("userID")}/pet`, testFeed)
         .then(response => {
-          //console.log(response);
           history.push("/feedlog");
           setChangeMade(new Date());
         })
@@ -64,8 +59,6 @@ export const AddFoodForm = ({ toEdit, history }) => {
 
   return (
     <>
-      Add Food Form
-      {/*console.log(new Date())*/}
       <form onSubmit={handleSubmit}>
         <input
           type="date"
