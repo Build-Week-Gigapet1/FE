@@ -5,40 +5,35 @@ import { UserInfoContext } from "../context/UserInfoContext";
 /* Component is supposed to take in a time period like day/week/month
    And spit out a Pie Chart with data displayed by food_category
    data is probably better transformed right here */
-export default function Chart({ timePeriod }) {
-  const { petFeedLog, setChangeMade } = useContext(UserInfoContext);
+export default function Chart({ chartData }) {
 
   //RE SORD FEED LOG TO [{fruit: qty},{dairy: qty},,,] FORMAT
   const [forChart, setForChart] = useState([]);
   const colors = ["#aaff31", "#e53d00", "#550527", "#21a0a0", "#db222a"]
 
   useEffect(() => {
-
+    console.log(chartData);
+    
     function transformData(inputData) {
-      console.log(inputData);
       let categoryArray = [];
       inputData.forEach(elem =>
         categoryArray.includes(elem.food_category)
           ? ""
           : categoryArray.push(elem.food_category)
       );
-      console.log(categoryArray);
       const sortedData = categoryArray.map(elem => {
         return({
           name: elem,
           value: inputData.reduce((acc, value) => value.food_category===elem ? acc + value.food_amount : acc, 0)
         })
       });
-      console.log(sortedData);
-
       return sortedData;
     }
-    setForChart(transformData(petFeedLog));
+    setForChart(transformData(chartData));
 
     
-  }, [petFeedLog]);
+  }, [chartData]);
   //forChart state == the reqested [{fruit: qty},{dairy: qty},,,] FORMAT
-  console.log(forChart);
 
   return (
     <ResponsiveContainer width="100%" height={300}>
@@ -59,7 +54,6 @@ export default function Chart({ timePeriod }) {
             value,
             index
           }) => {
-            console.log("handling label?");
             const RADIAN = Math.PI / 180;
             // eslint-disable-next-line
             const radius = 25 + innerRadius + (outerRadius - innerRadius);
