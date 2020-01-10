@@ -50,8 +50,9 @@ export const AddFoodForm = ({ toEdit, history }) => {
       axiosWithAuth()
         .post(`/auth/${localStorage.getItem("userID")}/pet`, testFeed)
         .then(response => {
-          history.push("/feedlog");
+          //history.push("/feedlog");
           setChangeMade(new Date());
+          history.push("/feedlog");//order of operaation fix to avoid loss of state on rendered screan
         })
         .catch(error => console.log(error));
     }
